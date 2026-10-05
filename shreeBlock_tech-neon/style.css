@@ -257,9 +257,32 @@ h1{font-size:clamp(42px,6vw,78px);line-height:1.04;max-width:760px;margin:22px 0
 .hex{position:absolute;width:330px;height:380px;border:1px solid rgba(102,115,244,.16);clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0 50%);transform:rotate(30deg)}
 .hex-two{transform:rotate(90deg) scale(.75);border-color:rgba(155,140,251,.2)}
 .hex-three{transform:rotate(0deg) scale(.52);border-color:rgba(23,232,176,.24)}
-.vision-center{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(23,232,176,.14),rgba(4,9,20,.95));border:1px solid rgba(23,232,176,.3);box-shadow:0 0 80px rgba(23,232,176,.12)}
+/* .vision-center{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,rgba(23,232,176,.14),rgba(4,9,20,.95));border:1px solid rgba(23,232,176,.3);box-shadow:0 0 80px rgba(23,232,176,.12)}
 .vision-center span{font:700 42px var(--font-display);color:var(--signal)}
-.vision-center small{font-family:var(--font-mono);font-size:8px;letter-spacing:.2em;color:var(--muted-dim)}
+.vision-center small{font-family:var(--font-mono);font-size:8px;letter-spacing:.2em;color:var(--muted-dim)} */
+.vision-center{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:radial-gradient(
+    circle,
+    rgba(23,232,176,.14),
+    rgba(4,9,20,.95)
+  );
+  /* border:1px solid rgba(23,232,176,.3); */
+  border:1px solid rgba(0, 0, 0, 0.3);
+  box-shadow:0 0 80px rgba(23,232,176,.12);
+}
+
+.vision-center img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .vision-copy>p{color:var(--muted);max-width:570px;margin-top:25px;line-height:1.85}
 .vision-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:35px}
 .vision-points div{border-top:1px solid var(--line);padding-top:13px}
@@ -283,6 +306,75 @@ h1{font-size:clamp(42px,6vw,78px);line-height:1.04;max-width:760px;margin:22px 0
 .stats div{padding:16px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
 .stats strong{color:var(--signal);font-size:13px}
 .stats span{font-size:12.5px;color:var(--text-soft)}
+
+/* =========================
+   PARTNERS
+========================= */
+
+.partners {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.partners .section-heading {
+  max-width: 720px;
+  margin: 0 auto 55px;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.partner-logo {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+
+  padding: 28px 40px;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+.partner-logo:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.partner-logo img {
+  max-width: 180px;
+  max-height: 75px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  filter: grayscale(100%);
+  opacity: 0.65;
+
+  transition:
+    filter 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.04);
+}
 
 /* FAQ / accordion */
 .accordion{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--panel)}
@@ -472,9 +564,59 @@ h1{font-size:clamp(42px,6vw,78px);line-height:1.04;max-width:760px;margin:22px 0
   .footer-links{gap:45px}
   .footer-bottom{flex-direction:column;gap:6px}
   .float-card{display:none}
+  .service-card {
+    min-height: auto;
+    padding-bottom: 70px;
+  }
+
+  .service-card p {
+    margin-bottom: 0;
+  }
+
+  .service-card a {
+    bottom: 25px;
+    left: 25px;
+  }
 }
+
+
 @media(min-width:1600px){
   .container{max-width:1400px}
   .hero{min-height:880px}
   h1{font-size:86px}
+}
+
+@media (max-width: 900px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partner-logo {
+    height: 135px;
+  }
+}
+
+@media (max-width: 600px) {
+  .partners {
+    padding: 75px 0;
+  }
+
+  .partners .section-heading {
+    margin-bottom: 35px;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .partner-logo {
+    height: 120px;
+    padding: 25px;
+  }
+
+  .partner-logo img {
+    max-width: 170px;
+    max-height: 65px;
+  }
 }
